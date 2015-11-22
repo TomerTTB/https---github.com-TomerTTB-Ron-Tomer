@@ -14,22 +14,25 @@ public class FindMax {
         int findMax = myNumbers[0];
 
         // Calling methods
-        findMaxFor(findMax, myNumbers);
-        findMaxWhile(findMax, myNumbers);
+       int findMaxFor = findMaxFor(findMax, myNumbers);
+       int findMaxWhile = findMaxWhile(findMax, myNumbers);
 
+       // Printing the results
+          System.out.println("The largest number in the array is: " + findMaxFor + " --> Using For");
+          System.out.println("The largest number in the array is: " + findMaxWhile + " --> Using While");
     }
 
-    private static void findMaxFor(int findMax, int myNumbers[]) {
+    public static int findMaxFor(int findMax, int myNumbers[]) {
         // I am stating at 1 because findMax is already set to the first element
         for(int i = 1 ; i < myNumbers.length ; i++){
             if(myNumbers[i] > findMax){
                 findMax = myNumbers[i];
             }
         }
-        System.out.println("The largest number in the array is: " + findMax + " --> Using For");
+        return findMax;
     }
 
-    private static void findMaxWhile(int findMax, int myNumbers[]) {
+    public static int findMaxWhile(int findMax, int myNumbers[]) {
 
         // I am stating at 1 because findMax is already set to the first element
         int counter = 1;
@@ -39,6 +42,6 @@ public class FindMax {
             }
             counter++;
         }
-        System.out.println("The largest number in the array is: " + findMax + " --> Using While");
+        return findMax;
     }
 }
