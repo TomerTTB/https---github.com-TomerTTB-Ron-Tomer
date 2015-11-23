@@ -22,6 +22,7 @@ public class FindAverage {
     private static double findAverageFor(int[] myNumbers) {
         double sum = 0;
         double average = 0;
+        
         for (int i = 0; i < myNumbers.length ; i++) {
             sum = sum + myNumbers[i];
             average = sum / (myNumbers.length);
