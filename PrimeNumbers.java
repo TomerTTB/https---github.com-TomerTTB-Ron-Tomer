@@ -14,16 +14,16 @@ public class PrimeNumbers {
         String resultFile = "C:\\EnrichmentValidator\\resultNumbers.txt";
 
         // Create a file with random numbers
-        generateNewRandomNumbers(inputFile);
+           generateInputFile(inputFile);
 
-        //Get numbers from file and send to isPrime
-        getNumbersFromFile(inputFile, resultFile);
+        // Get numbers from file and send to isPrime
+           isPrimeNumberFeeder(inputFile, resultFile);
 
     }
 
-    private static void generateNewRandomNumbers(String inputFile) throws FileNotFoundException, UnsupportedEncodingException {
+    private static void generateInputFile(String inputFile) throws FileNotFoundException, UnsupportedEncodingException {
 
-        int min = -100;
+        int min = 0;
         int max = 100;
 
         PrintWriter writer = new PrintWriter(inputFile, "UTF-8");
@@ -36,22 +36,22 @@ public class PrimeNumbers {
         writer.close();
     }
 
-    private static void getNumbersFromFile(String inputFile, String resultFile) throws IOException {
+    private static void isPrimeNumberFeeder(String inputFile, String resultFile) throws IOException {
 
         PrintWriter writer = new PrintWriter(resultFile, "UTF-8");
 
         FileReader txtFile = new FileReader(inputFile);
         BufferedReader numbersFromFile = new BufferedReader(txtFile);
 
-        int numbers = 0;
+        int number = 0;
         String line;
         while ((line = numbersFromFile.readLine()) != null) {
-            numbers = Integer.parseInt(line);
-            boolean answer = isPrime(numbers);
+            number = Integer.parseInt(line);
+            boolean answer = isPrime(number);
             if (answer){
-                writer.println("The number: " + numbers + " is " + answer + " = Prime Number");
+                writer.println("The number: " + number + " is " + answer + " = Prime Number");
             }else{
-                writer.println("The number: " + numbers + " is " + answer + " = Is not a Prime Number");
+                writer.println("The number: " + number + " is " + answer + " = Is not a Prime Number");
             }
         }
         writer.close();
@@ -62,11 +62,25 @@ public class PrimeNumbers {
         if (n <= 1){
             return false;
         }
-        for (int i = 2 ; i <= n / 2 ; i++){
+        // double squareRoot = Math.sqrt(n);
+           double squareRoot = findingSquareRoot(n);
+       // for (int i = 2 ; i <= n / 2 ; i++){
+          for (int i = 2 ; i <= squareRoot ; i++){
             if(n % i == 0){
                 return false;
             }
         }
         return true;
+    }
+
+    private static double findingSquareRoot(int n) {
+        double halfOfSquare;
+        double squareRoot = n / 2;
+
+        do {
+            halfOfSquare = squareRoot;
+            squareRoot = (halfOfSquare + (n / halfOfSquare)) / 2;
+        }while ((halfOfSquare - squareRoot) != 0);
+        return squareRoot;
     }
 }
