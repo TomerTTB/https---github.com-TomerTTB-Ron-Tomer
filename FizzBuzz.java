@@ -23,3 +23,6 @@ public class GeneralMain {
         }
     }
 }
+ // Question:
+ //       After creating my solution I was looking on-line for additional solutions and encounter the following:
+ //       1) If I want to improve efficiency you should get rid of the " + i" or any string constructor, is that correct ?
